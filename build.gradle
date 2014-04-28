@@ -1,0 +1,35 @@
+allprojects {
+
+    apply plugin: 'groovy'
+    version = '0.0.1'
+
+    repositories {
+        mavenCentral()
+    }
+
+    dependencies {
+        compile "org.codehaus.groovy:groovy:2.3.0-rc-2"
+        compile "org.slf4j:slf4j-api:1.7.6"
+
+        testCompile 'org.spockframework:spock-core:0.7-groovy-2.0'
+        testCompile 'junit:junit:4.11'
+    }
+
+}
+
+
+subprojects {
+    apply plugin: 'groovy'
+
+    sourceSets {
+        main {
+            groovy { srcDirs = ['src/main'] }
+            resources { srcDirs = ['src/resources'] }
+        }
+
+        test {
+            groovy { srcDirs = ['src/test'] }
+        }
+    }
+
+}
